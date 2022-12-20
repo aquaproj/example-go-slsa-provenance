@@ -8,6 +8,15 @@
     {
       "matchUpdateTypes": ["digest"],
       "enabled": false
+    },
+    {
+      "matchDepTypes": [
+        "action"
+      ],
+      "matchPackageNames": [
+        "slsa-framework/slsa-github-generator"
+      ],
+      "pinDigests": false
     }
   ]
 }
