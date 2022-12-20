@@ -25,7 +25,7 @@ jobs:
           args: release --rm-dist --skip-publish
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb # v3
         with:
           name: artifacts
           path: |
@@ -47,7 +47,7 @@ jobs:
       actions: read # Needed for detection of GitHub Actions environment.
       id-token: write # Needed for provenance signing and ID
       contents: write # Needed for release uploads
-    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@v1.4.0
+    uses: slsa-framework/slsa-github-generator/.github/workflows/generator_generic_slsa3.yml@68bad40844440577b33778c9f29077a3388838e9 # v1.4.0
     with:
       base64-subjects: "${{ needs.build.outputs.hashes }}"
       # Upload provenance to a new release
@@ -59,12 +59,12 @@ jobs:
     steps:
       - run: mkdir -p dist/artifacts dist/provenance
       - name: Download the provenance
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9782bd6a9848b53b110e712e20e42d89988822b7 # v3
         with:
           name: ${{ needs.provenance.outputs.provenance-name }}
           path: dist/provenance/${{ needs.provenance.outputs.provenance-name }}
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@9782bd6a9848b53b110e712e20e42d89988822b7 # v3
         with:
           name: artifacts
           path: dist/artifacts
