@@ -18,3 +18,20 @@ archives:
   - name_template: '{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}'
 release:
   draft: true # we update release note manually before releasing
+signs:
+  - cmd: cosign
+    artifacts: checksum
+    signature: ${artifact}.sig
+    certificate: ${artifact}.pem
+    output: true
+    env:
+      - COSIGN_EXPERIMENTAL=1
+    args:
+      - sign-blob
+      - --output-signature
+      - ${signature}
+      - --output-certificate
+      - ${certificate}
+      - --oidc-provider
+      - github
+      - ${artifact}
