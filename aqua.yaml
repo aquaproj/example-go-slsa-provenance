@@ -9,6 +9,6 @@
 #   - all
 registries:
   - type: standard
-    ref: v3.116.0 # renovate: depName=aquaproj/aqua-registry
+    ref: v3.162.0 # renovate: depName=aquaproj/aqua-registry
 packages:
   - name: sigstore/cosign@v1.13.1
